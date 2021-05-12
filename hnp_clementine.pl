@@ -15,7 +15,7 @@
 # Franklin Street, Fifth Floor, Boston, MA 02110-1301, USA
 
 use URI::Escape;
-HexChat::register("HNP Clementine", "1.0.0", "HexChat Now Playing Script for 2.x, based on HNP 2.0.1");
+HexChat::register("HNP Clementine", "1.0.1", "HexChat Now Playing Script for 2.x, based on HNP 2.0.1");
 
 HexChat::hook_command("TOGGLE_ALBUM", call_toggle_album);
 HexChat::hook_command("TOGGLE_YEAR", call_toggle_year);
@@ -76,7 +76,7 @@ return HexChat::get_info("configdir") . "/hnp.conf";
 
 sub load_messages {
     HexChat::print("---");
-    HexChat::print("\cC02HNP:\cC01 HNP Clementine 1.0.0 by Antonio Prcela, based on HNP 2.0.1, loaded.");
+    HexChat::print("\cC02HNP:\cC01 HNP Clementine 1.0.1 by Antonio Prcela, based on HNP 2.0.1, loaded.");
     HexChat::print("\cC02HNP:\cC01 HexChat Now Playing Script for 2.x is a Perl script that displays info about the currently playing track in and the music collection.");
     HexChat::print("\cC02HNP:\cC01 Type /HNP to use and /HNPHELP for a full list of commands.");
     HexChat::print("\cC02HNP:\cC01 For suggestions, feature requests and bug reports please contact me at github.com/precla.");
@@ -758,7 +758,9 @@ sub cmd_hnp {
             } elsif ($position == "" && $duration ne "") {
                 $length = "[Duration: $duration] ";
             } elsif ($position ne "" && $duration == "") {
-                $length = "[@ $position] ";
+                $tmp_url = ( $META =~ /url: (.*)/  ? $1 : "" );
+                chomp($tmp_album);
+                $length = "[$tmp_url @ $position] ";
             } else {
                 $length = "";
             }
