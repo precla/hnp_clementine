@@ -1,4 +1,4 @@
-# HNP Clementine 1.0.0 by Antonio Prcela (github precla) based on HNP 2.0.1
+# HNP Clementine 1.0.0 based on HNP 2.0.1
 
 HNP (HexChat Now Playing) is a now playing announcer for HexChat and
 Clementine capable of showing detailed info about the current playing
